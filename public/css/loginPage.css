@@ -1,0 +1,34 @@
+.main{
+	    margin: 7% auto;
+
+}
+.panel{
+	border:0.5px solid black;
+}
+.panel-heading{
+	    height: 80px;
+	    background-color: #1976D2 !important;
+	    color: white !important;
+	    position: relative;
+}
+.panel-heading span{
+	position: absolute;
+	bottom: 20px;
+	font-size: 32px;
+	color: white;
+	font-weight: 300;
+}
+input{
+	border-radius: 5px !important;
+	box-shadow: none !important;
+	background-color: none !important;
+}
+input:focus{
+	border: 1.5px solid #1976D2 !important;
+	box-shadow: #1976D2 !important;	
+}
+.panel-default{
+	-webkit-box-shadow: 9px 10px 35px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 9px 10px 35px 1px rgba(0,0,0,0.75);
+box-shadow: 9px 10px 35px 1px rgba(0,0,0,0.75) !important;
+}

@@ -1,0 +1,284 @@
+$redcolor:#e84a4a;
+$bg_footer:#1d1e20;
+$heads:#252729;
+$empth_div:#787878;
+
+
+@mixin ready($background,$width,$height){
+	background:$background;
+	width:$width;
+	height:$height;
+}
+
+#footer-wrap{
+	@font-face{
+  font-family: 'Roboto';
+  /*font-family: 'Roboto Mono' ;*/
+ /* src :url('../../fonts/Roboto-Regular.ttf');*/
+  src :url('../../fonts/Roboto-Thin.ttf');
+ /* src :url('../../fonts/RobotoSlab-Regular.ttf');
+  src :url('../../fonts/RobotoSlab-Thin.ttf');*/
+}
+
+		
+		p{
+			font-family: 'Roboto', sans-serif;
+			font-size: 14px;
+		}
+		/*.same{margin-left: 9px;}*/
+	a{
+		color: white;
+		text-decoration: none;
+	}
+	.footer_top_line{
+	padding:49px 0px 6px 0px;
+	border-top:2px solid $redcolor;
+	@include ready($bg_footer,100%,auto);	
+	}
+	.logo{
+		padding-bottom:32px;
+		img{margin-top:-4px;}
+	}
+	.logo_bottom{padding-left:23px;}
+	
+	.info, .last_update{
+	font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 700;
+    color: #bbb;
+    width: 99%;
+
+    p{font-weight: 100}
+
+	.info_email{
+		font-family: 'Roboto', sans-serif;
+		padding-left:20px;
+		color:white;
+		/*font-weight:bold;*/
+		}
+	
+	}
+	.recent_post{ .row{padding-left:7px;} .small_text{margin-bottom:3px;} font-weight:500;}
+	.best_reviews{.row{padding-left:8px;} .small_text{margin-bottom:10px;} font-weight:500; p{font-size: 12px;}}
+	.newsletters{.same_top{width:90%;}}
+	.newsletters{ .row{width:118%; padding-left: 4px}::-webkit-input-placeholder {
+		font-family: 'Roboto',sans-serif;
+   font-size: 12px;
+	}
+	:-moz-placeholder {
+	font-family: 'Roboto',sans-serif; /* Firefox 18- */
+	   font-size: 12px; 
+	}
+	::-moz-placeholder { 
+	font-family: 'Roboto',sans-serif; /* Firefox 19+ */
+	  font-size: 12px;  
+	}
+	:-ms-input-placeholder { 
+	font-family: 'Roboto',sans-serif; 
+	   font-size: 12px;  
+	} }
+
+	/*media query*/
+	
+
+	@media (max-width: 900px){.container{margin-left: 10px;}
+	.smallimg{width:390px; }.newsletters{ .row{width:80%;} }
+	.reviews_category{margin-bottom: 5px;}
+	.info p,.logo img{padding-left: 5px}
+	.recent_post{ .row{padding-left:3px;}.small_text{margin-bottom: 0px; }.small_div{padding-left: 10px; }.col-md-8{padding-top: 5px}.same_top{margin-left: 8px}}
+	.best_reviews{ .row{padding-left:15px;} .small_text{margin-bottom:10px;} p{font-size: 12px;} }
+	.newsletters{.same_top{width: 97%;}.col-md-12{width:95%;}.row{width:106%; padding-left: 16px;}}
+	.small_img{width:20%;}
+	 }
+		/*media query*/
+	
+
+	.last_update{color:#636468;font-size: 13px;font-weight: 700;}
+	.same_top{
+	margin-bottom:21px;
+	color:$empth_div;
+	/*text-align:center;*/
+	padding:5px 0px;
+	@include ready($heads,95%,auto);
+	h4{
+		font-family: 'Roboto', sans-serif;
+		/*font-family: 'Roboto Mono' ;*/
+		font-weight: 100;
+		font-size: 18px;
+		margin-bottom: 3px;
+		margin-top: 3px;
+		padding-left: 18px;
+		color: white;
+	}
+	}
+	.col-md-12{padding-left: 0px;}
+	.regtangle:after{
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	left: 6%;
+    bottom: -6px;
+    border-top: 10px solid #252729;
+}
+	.small_div{
+		padding:0;
+	    padding-top: 4px;
+	    margin-bottom:-7px;
+		.col-md-4{padding-left: 0;
+		margin-right: -11px;
+}
+		.col-md-8{padding-left: 5px ;}
+		.small_img{margin-padding: 0px}
+
+	.imgM{
+		overflow: hidden;
+		margin-left:0;
+		margin-bottom:20px;
+		@include ready($empth_div,70px,70px);	
+		   img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            -webkit-transition: all 0.5s ease-in-out; }
+        img:hover {
+            -webkit-transform: scale(1.3); }
+
+	}
+
+	.small_text{
+		font-size:14px;
+		color:white;
+		padding:0;
+		
+	}
+	.reviews_rate{
+		margin-left: 7px;
+		width: auto;
+			
+	 p{font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-left: 3px;
+    float: right;}}
+	.reviews_rate,.reviews_category{
+		font-size: 12px;
+		/*text-align:center;*/
+		color:white;
+		height: 20px;
+    	line-height: 20px;		
+		padding: 0px 8px;
+		background:$redcolor;
+
+
+		}
+		
+		.reviews_category{
+			padding: 0 8px;
+   			margin-left: 4px;
+			background:#46d3ce;
+			/*width: 80px;*/
+		}.lightblue{background: #44d3cd;}
+
+		.blue_bg{
+			margin-bottom:10px;
+			background:#4688d3;
+		}
+		.green_bg{
+			@extend .blue_bg;
+			background:#46d367;
+		}
+		.red_bg{
+			@extend .blue_bg;
+			background:$redcolor;
+		}
+		
+	}
+	.get_latest{
+		font-family: 'Roboto';
+		font-weight: 100;
+		width: 86%;
+		padding-bottom: 30px;
+		color:#bbb;
+		}
+		.latest_mail_info_main{padding-bottom: 37px;}
+	.latest_mail_info {
+		width: 275px;
+		margin-left:25;
+		padding-left:0;
+		padding-bottom: 30px;
+		input{
+			width: 232px;
+			padding: 0px 23px;
+			border: none;
+			height: 40px;
+			border-radius:5px;
+			float: left;
+			}
+		input:focus{
+			outline: none;
+		}
+	}
+	.latest_mail_info_done{
+		width: 40px;
+	}
+	.done{
+		color:white;
+		background:$redcolor;
+		border-radius: 5px;
+		padding: 10px 12px;
+    	width: 38px;
+		float: right;
+		transition: 0.200s;
+		
+	}
+	.done:hover{background:#d22222}
+	.social_n{
+		padding-top: 6px;
+		text-align:center;
+		width: 88%;
+
+		.fa{	
+			border-radius: 2px;			
+			padding: 3px 5px;			
+			font-size: 18px;
+			color:white;
+			text-decoration: none;
+			 transition: 0.200s;
+			 /*background: red;*/
+
+		}
+		/*.fa-dribbble{padding: 4px 5px;}	*/	
+		.fa-facebook{padding: 3px 6px;}		
+		.fa-dribbble:hover{background:#E84A4A;}
+		.fa-google-plus:hover{background:#ea4335;}
+		.fa-twitter:hover{background:#2eacf6;}
+		.fa-facebook:hover{background:#4867aa;}
+		.fa-rss:hover{background:#f59f2f;}
+		.fa-github:hover{background:black}
+		.fa-linkedin-square:hover{background:#0177b5;}
+		.fa-pinterest-square:hover{background:#d01d15;}
+
+	}
+	.copyright{
+		margin-top: 30px;
+		padding: 10px;
+		border-top: 1px solid #18181a;
+		 color: $empth_div;
+		 }
+		 .copyrightText{
+		 	font-family: 'Roboto',sans-serif;
+		 	font-size: 12px;
+		 	padding-top: 8px;
+		 	float: left;
+		 }
+		 .take_me_top{
+		 	margin-right: 21px;
+		 	cursor: pointer;
+		 	font-size: 14px;	 	
+		 	float: right;
+		 }
+}

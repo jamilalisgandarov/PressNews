@@ -1,0 +1,21 @@
+.main {
+  padding: 20px 50px;
+  font-family: 'Raleway', sans-serif; }
+  .main .mainForm {
+    padding: 20px;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    -webkit-box-shadow: -5px 6px 57px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -5px 6px 57px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: -5px 6px 57px -9px rgba(0, 0, 0, 0.75); }
+    .main .mainForm input:focus {
+      border-color: lightgray;
+      box-shadow: lightgray; }
+    .main .mainForm h2 {
+      text-align: center; }
+
+body {
+  background-color: lightgray !important; }
+
+/*# sourceMappingURL=style.css.map */
