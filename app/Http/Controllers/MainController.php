@@ -44,7 +44,7 @@ class MainController extends Controller
     function search(Request $request){
         $searchKey=$request->search;
         $result = News::where('desc_az', 'like', '%'.$searchKey.'%')
-                ->where('visibility',1)->get();
+                ->get();
         return view('website.searchResults',compact('result'));
     }
 

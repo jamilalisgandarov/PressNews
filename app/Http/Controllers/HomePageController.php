@@ -7,32 +7,45 @@ use App\News;
 use App\Category;
 use App\Http\Requests;
 use App\Subcategory;
+use Illuminate\Support\Facades\View;
 
 class HomePageController extends Controller
-{
-    public function index()
-    {
-        $newsAll    =News::where('visibility',1)->whereHas('subcategory', function($query){
+{   
+    protected $subcategory;
+    protected $category;
+    protected $newsAll;
+
+    public function __construct(){
+    $this->newsAll=\App\News::where('visibility',1)->whereHas('subcategory', function($query){
             $query->where('visibility', 1)->whereHas('category', function ($query){
                  $query->where('visibility', 1);
             });
         })->get();
-     $subcategory=Subcategory::where('visibility',1)->whereHas('category',function ($query){
+
+     $this->subcategory=\App\Subcategory::where('visibility',1)->whereHas('category',function ($query){
             $query->where('visibility', 1);
-            })->get();
-      
-    	return view('website.index',compact('newsAll','subcategory'));
+            })->get(); 
+
+     $this->category=\App\Category::where('visibility',1)->get();   
+
+    View::share('subcategory',$this->subcategory);
+    View::share('category',$this->category);
+    View::share('newsAll',$this->newsAll); 
+    }
+
+
+    public function index()
+    {
+
+    	return view('website.index');
     	
     }
     public function show(News $news)
     {
-    	$newsAll =News::all();
-    	return view('website.news',compact('newsAll','news'));
+    	return view('website.news',compact('news'));
     }
     public function subcategory($id){
-
-         $catNews=Subcategory::where('id',$id)->get();
-        //return $catNews=News::where('subcategory_id',$subcategory->id)->get();
+        $catNews=$this->subcategory->find($id)->news->where('visibility',1);
         return view('website.category',compact('catNews'));
     }
 }

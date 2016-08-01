@@ -9,9 +9,47 @@ use App\Subcategory;
 use App\User;
 use DB;
 use App\Http\Requests;
+use Illuminate\Support\Facades\View;
 
 class NewsController extends Controller
-{
+{   
+    protected $subcategory;
+    protected $category;
+    protected $newsAll;
+
+    public function __construct(){
+    $this->newsAll=\App\News::where('visibility',1)->whereHas('subcategory', function($query){
+            $query->where('visibility', 1)->whereHas('category', function ($query){
+                 $query->where('visibility', 1);
+            });
+        })->get();
+
+     $this->subcategory=\App\Subcategory::where('visibility',1)->whereHas('category',function ($query){
+            $query->where('visibility', 1);
+            })->get(); 
+
+     $this->category=\App\Category::where('visibility',1)->get();   
+
+    View::share('subcategory',$this->subcategory);
+    View::share('category',$this->category);
+    View::share('newsAll',$this->newsAll); 
+    }
+
+    public function sliderNews(){
+
+     $newsAll= $this->newsAll->where('slider',1);
+    return view('slider.slider',compact('newsAll'));
+    }
+    public function sliderTake(News $id){
+    $id->slider=0;
+    $id->save();
+    return back();
+    }
+    public function sliderAdd(News $id){
+        $id->slider=1;
+        $id->save();
+        return back();
+    }
     public function showNews()
     {               
         $id                    =\Auth::user()->id;
@@ -23,19 +61,16 @@ class NewsController extends Controller
     {
         $id                    =\Auth::user()->id;
         $user                  =User::find($id);
-    	$news                  =News::all();
-        $categories            =Category::all();
+    	$news                   =News::all();
+        $categories             =Category::all();
     	return view('news.add',compact('news','categories','user'));
     }
     public function insert(Request $request){
         $this->validate($request, [
         
         'short_desc_az' => 'required',
-        'title_az'      =>'required',
-        'desc_az'       => 'required',
-        'keywords'      => 'required',
-        'main_img'      => 'required',
-        'category_id'   => 'required',
+        'title_az'   =>'required',
+        'desc_az' => 'required',
         ]);
 
         if($request->visibility =='on'){
@@ -48,7 +83,7 @@ class NewsController extends Controller
         if ($request->main_img!="") { 
             $fileName=$request->main_img->getClientOriginalName();
             $newName=time().'_'.$fileName;
-            $request->main_img->move('/images/news_img/',$newName);
+            $request->main_img->move('images/news_img/',$newName);
         }else{
             $newName='no_photo.jpg';
         }
@@ -85,9 +120,8 @@ class NewsController extends Controller
         $this->validate($request, [
         
         'short_desc_az' => 'required',
-        'title_az'      =>'required',
-        'desc_az'       => 'required',
-        'keywords'      => 'required',
+        'title_az'   =>'required',
+        'desc_az' => 'required',
         ]);
 
         if($request->visibility=='on'){
@@ -99,7 +133,7 @@ class NewsController extends Controller
         if ($request->main_img!="") { 
             $fileName           =$request->main_img->getClientOriginalName();
             $newName            =time().'_'.$fileName;
-            $request->main_img->move('/images/news_img/',$newName);
+            $request->main_img->move('images/news_img/',$newName);
         }else{
             $newName            =$news->main_img;
         }
@@ -125,7 +159,7 @@ class NewsController extends Controller
     public function delete(News $news)
     {
         $news->delete();
-        \File::delete('/images/news_img/'.$news->main_img);
+        \File::delete('images/news_img/'.$news->main_img);
         return back();
         
     }

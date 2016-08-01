@@ -114,6 +114,11 @@
                 </span>
               </a>
             </li>  
+             <li class="treeview">
+              <a href="/admin/sliderNews">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Slider News</span>
+              </a>
+            </li> 
             <li class="treeview">
               <a href="/admin/news/add">
                 <i class="fa fa-plus" aria-hidden="true"></i> <span>Add News</span>

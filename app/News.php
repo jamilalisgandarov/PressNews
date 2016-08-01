@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    public $table  ='news';
     function category()
     {
     	return $this->belongsTo('App\Category');

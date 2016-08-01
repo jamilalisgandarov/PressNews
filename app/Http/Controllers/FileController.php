@@ -53,7 +53,7 @@ class FileController extends Controller
             $gallery->path_small=$smallName;
             $gallery->save();
         }
-        return redirect('/admin/gallery');
+        return redirect('/gallery');
     	
   }
   public function edit(Gallery $gallery)
@@ -78,7 +78,7 @@ class FileController extends Controller
             $gallery->path_small='$smallName';
             $gallery->save();
         }
-        return redirect('/admin/gallery');
+        return redirect('/gallery');
       
   }
 

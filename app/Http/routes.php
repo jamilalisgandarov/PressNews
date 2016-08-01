@@ -34,7 +34,10 @@ Route::group(['middleware'=>['web','auth']],function (){
 	Route::get('/admin/news/{news}/edit','NewsController@edit');
 	Route::patch('/admin/news/{news}/update','NewsController@update');
 	Route::get('/admin/news/{news}/delete','NewsController@delete');
-	
+	//sliderNews
+		Route::get('/admin/sliderNews','NewsController@sliderNews');
+		Route::get('/admin/slider/add/{id}','NewsController@sliderAdd')->middleware('slider');
+		Route::get('/admin/slider/remove/{id}','NewsController@sliderTake');
 	//========================== Category =============================
 
 	Route::group(['middleware'=>['status']],function (){
@@ -87,5 +90,5 @@ Route::auth();
 
 Route::get('/','HomePageController@index');
 Route::get('/news/{news}','HomePageController@show');
-Route::get('/news/category/{subcategory}','HomePageController@subcategory');
+Route::get('/news/category/{id}','HomePageController@subcategory');
 Route::post('/news/search','MainController@search');

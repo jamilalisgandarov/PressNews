@@ -48,7 +48,7 @@
 			  		</div>
 			  		<div class="form-group col-md-4">
 			    		<label for="full_desc">Full Description Ru</label>
-			    		<textarea name="desc_ru" id="full_desc" type="text" class="form-control">{{$news->desc_ru}}</textarea>
+			    		<textarea name="desc_ru" id="full_desc" type="text" class="form-control">{{$news->desc_ru}}'</textarea>
 			  		</div>
 				</div>
 			  	<hr>

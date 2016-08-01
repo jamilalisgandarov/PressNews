@@ -12,7 +12,10 @@
 				<th>Author</th>
 				<th>Title</th>
 				<th>Short description</th>
-				<th>Catecory</th>
+				<th>Category</th>
+				@if(count(App\News::where('slider',1)->get())<6)
+				<th>Show on slider</th>
+				@endif
 				<th>updated time</th>
 				<th>Edit</th>
 				<th>Delete</th>
@@ -28,6 +31,16 @@
 					<td>{{$news->title_az}}</td>
 					<td>{{$news->short_desc_az}}</td>
 					<td>{{$news->subcategory->title_az}}</td>
+					@if(count(App\News::where('slider',1)->get())<6)
+						<td>@if($news->slider!=1 && $news->visibility==1)			
+							<a href="/admin/slider/add/{{$news->id}}">
+								<button type="button" class="btn btn-primary" id='#newsModal' aria-label="Left Align">
+									<span class="" aria-hidden="true">Add</span>
+								</button>
+							</a>@endif
+						</td>
+
+					@endif
 					<td>{{$news->updated_at}}</td>
 					<td>
 						@if(\Auth::user()->status==0||\Auth::user()->id==$news->user_id)

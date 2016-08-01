@@ -21,15 +21,13 @@
                         <div class=" sliderMain padding ">
                             <div class="sliderMainTrack">
                                 <div class="sliderTrack">
-                                @if(count(App\News::all())>0)
-                                @foreach(($newsAll->take(6)) as $slider)
+                                @foreach(($newsAll->where('slider',1)->take(6)) as $slider)
                                 <div class="sliderNews noselect activeSlider triangle ">
                                     <div class="col-md-12 sliderNewsTitle" data-img="/images/news_img/{{$slider->main_img}}" data-url='/news/{{$slider->id}}' data-cat='{{$slider->subcategory->title_az}}'>
                                         <h4 class="sliderNewsTitleColored">{{$slider->title_az}}</h4>
                                     </div>
                                 </div>
                                 @endforeach
-                                @endif
                                 </div>
                             </div>
                         </div>
@@ -54,30 +52,30 @@
 
                         <div class="day_post col-md-12">
                             <div class="col-md-12 regtangle">
-                            @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                          
                                 <p>{{$subcategory->first()->title_az}}</p>
-                            @endif
+                  
                             </div>
                             <div class="col-md-12 padding-right-0">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-12 padding-right-0">
                                         <div class="row day_post_img ">
-                                            @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                         
                                             <a href="/news/{{$subcategory->first()->news->last()->id}}">
                                                 <img src="<?php echo '/images/news_img/'.$subcategory->first()->news->last()->main_img ?>">
                                             </a>
-                                            @endif
+                                      
                                            <!--  <div class="society"><p>Society</p></div> -->
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12 day_post_text">
                                         <div>
-                                        @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                       
                                             <h3><a href="/news/{{$subcategory->first()->news->last()->id}}">{{str_limit($subcategory->first()->news->last()->title_az,50)}}</a></h3>
                                             <p><?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($subcategory->first()->news->last()->updated_at))->diffForHumans() ?> / 0 comments</p>
                                             <p>{!! str_limit($subcategory->first()->news->last()->short_desc_az ,200) !!}
                                             </p>
-                                        @endif
+                                
                                         </div>
                                     </div>
                                 </div>
@@ -86,24 +84,24 @@
     <!--     lifestyle -->
                         <div class="lifestyle col-md-12">
                             <div class="col-md-12 regtangle">
-                            @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                         
                                 <p>{{$subcategory->take(2)->last()->title_az}}</p>
-                            @endif
+                          
                             </div>
                             <div class="col-md-12 padding-right-0">
                                 <div class="row">
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12 padding-right-0">
                                         <div class="row high_img_div">
-                                            @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                            
                                             <a href="/news/{{$subcategory->take(2)->last()->news->last()->id}}">
                                                 <img src="<?php echo '/images/news_img/'.$subcategory->take(2)->last()->news->last()->main_img?>">
                                              </a>
-                                            @endif
+                                       
                                         </div>
                                         
                                         <div class="row text">
-                                        @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                     
                                             <h3>
                                             
                                                 <a href="/news/{{$subcategory->take(2)->last()->news->last()->id}}">{{str_limit($subcategory->take(2)->last()->news->last()->title_az,40)}}
@@ -112,12 +110,11 @@
                                             </h3>
                                             <p><?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($subcategory->take(2)->last()->news->last()->updated_at))->diffForHumans() ?> / 0 comments</p>
                                             <p>{{str_limit($subcategory->take(2)->last()->news->last()->short_desc_az,100)}}</p>
-                                        @endif
+                                       
                                         </div>
                                     </div>
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12 small">
-                                     @if(count(App\News::all())>0&&count(App\Subcategory::all()))
                                         @foreach($subcategory->take(2)->last()->news->take(4) as $news)
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-4 small_img">
@@ -132,7 +129,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        @endif
+                                     
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +145,7 @@
                             <div class="col-md-12 carousel_main">
                                 <div class="over">
                                     <div class="carousel_move" id="carousel_move" draggable="true">
-                                     @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                   
                                     @foreach(($newsAll->take(10)) as $slider)
                                         <div class="carousel_item">
                                             <a href="/news/{{$slider->id}}">
@@ -156,7 +153,7 @@
                                             </a>
                                         </div>
                                     @endforeach
-                                    @endif
+                             
                                     </div>
                                     <div class="right"><i class="fa fa-3x fa-chevron-right" aria-hidden="true"></i></div>
                                     <div class="left"><i class="fa fa-3x fa-chevron-left" aria-hidden="true"></i></div>
@@ -171,24 +168,23 @@
     <!-- the music -->
                         <div class="music col-md-12">
                             <div class="col-md-12 regtangle">
-                             @if(count(App\News::all())>0&&count(App\Subcategory::all()))
                                 <p>{{$subcategory->take(3)->last()->title_az}}</p>
-                            @endif
+                        
                             </div>
                             <div class="col-md-12 padding-right-0">
                                 <div class="row">
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12 padding-right-0">
                                         <div class="row high_img_div">
-                                        @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                        
                                             <a href="/news/{{$subcategory->take(3)->last()->news->last()->id}}">
                                                 <img src="<?php echo '/images/news_img/'.$subcategory->take(2)->last()->news->last()->main_img?>">
                                              </a>
-                                        @endif
+                                    
                                         </div>
                                         
                                         <div class="row text">
-                                        @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                        
                                             <h3>
                                              
                                                 <a href="/news/{{$subcategory->take(3)->last()->news->last()->id}}">{{str_limit($subcategory->take(3)->last()->news->last()->title_az,40)}}
@@ -197,12 +193,12 @@
                                             <p><?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($subcategory->take(3)->last()->news->last()->updated_at))->diffForHumans() ?> / 0 comments</p>
                                             <p>{{str_limit($subcategory->take(3)->last()->news->last()->short_desc_az,100)}}
                                             </p>
-                                        @endif
+                                    
                                         </div>
                                     </div>
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12 small">
-                                     @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                                 
                                         @foreach($subcategory->take(3)->last()->news->take(4) as $news)
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-4 small_img">
@@ -218,7 +214,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                    @endif
+                     
                                     </div>
                                 </div>
                             </div>
@@ -226,24 +222,21 @@
     <!-- the world news -->
                         <div class="world_news col-md-12">
                             <div class="col-md-12 regtangle">
-                             @if(count(App\News::all())>0&&count(App\Subcategory::all()))
+                           
                                 <p>{{$subcategory->take(2)->last()->title_az}}</p>
-                            @endif
+                        
                             </div>
                             <div class="col-md-12 padding-right-0">
                                 <div class="row">
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12 padding-right-0">
                                         <div class="row high_img_div">
-                                        @if(count(App\News::all())>0&&count(App\Subcategory::all()))
                                             <a href="/news/{{$subcategory->take(1)->last()->news->last()->id}}">
                                                 <img src="<?php echo '/images/news_img/'.$subcategory->take(1)->last()->news->last()->main_img?>">
                                              </a>
-                                        @endif
                                         </div>
                                         
                                         <div class="row text">
-                                        @if(count(App\News::all())>0&&count(App\Subcategory::all()))
                                             <h3>
                                                 <a href="/news/{{$subcategory->take(1)->last()->news->last()->id}}">{{str_limit($subcategory->take(1)->last()->news->last()->title_az,40)}}
                                                 </a>
@@ -251,12 +244,10 @@
                                             <p><?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($subcategory->take(1)->last()->news->last()->updated_at))->diffForHumans() ?> / 0 comments</p>
                                             <p>{{str_limit($subcategory->take(1)->last()->news->last()->short_desc_az,100)}}
                                             </p>
-                                        @endif
                                         </div>
                                     </div>
                                     
                                     <div class="col-md-6 col-sm-6 col-xs-12 small">
-                                    @if(count(App\News::all())>0&&count(App\Subcategory::all()))
                                         @foreach($subcategory->take(1)->last()->news->take(4) as $news)
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-4 small_img">
@@ -272,7 +263,6 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +292,6 @@
                                 <div class="col-md-12 regtangle">
                                     <p>Ümumi xəbərlər</p>
                                 </div>
-                                @if(count(App\News::all())>1&&count(App\Subcategory::all())>0)
                                 @for($i=0;$i<4;$i++)
                                 <?php $rand=mt_rand(1,count($newsAll)-1);?>
                                 <div class="col-md-12">
@@ -317,8 +306,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endfor
-                                @endif              
+                                @endfor       
                             </div>
                         </div>
     <!-- popular tags    -->
@@ -329,13 +317,11 @@
                                 </div>
                                 <div class="col-md-12 popular_tags_item">
                                     <div class="row">
-                                    @if(count(App\News::all())>0&&count(App\Subcategory::all()))
                                     @foreach($newsAll->all() as $newsTag)
                                         <div class="tag">
                                             <p>{{$newsTag->keywords}}</p>
                                         </div>
                                     @endforeach
-                                    @endif
                                     </div>
                                 </div>
                             </div>

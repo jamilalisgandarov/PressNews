@@ -1,12 +1,3 @@
-<?php         
-$newsAll    =\App\News::where('visibility',1)->whereHas('subcategory', function($query){
-            $query->where('visibility', 1)->whereHas('category', function ($query){
-                 $query->where('visibility', 1);
-            });
-        })->get();
-     $subcategory=\App\Subcategory::where('visibility',1)->whereHas('category',function ($query){
-            $query->where('visibility', 1);
-            })->get();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +67,7 @@ $newsAll    =\App\News::where('visibility',1)->whereHas('subcategory', function(
                                 <ul>
                                     <li>
                                         <div>
-                                            <img src="/assets/images/header/fr.png">
+                                            <img src="/assets/images/header/azerbaijan.png">
                                         </div>
                                     </li>
                                     <li>
@@ -123,19 +114,19 @@ $newsAll    =\App\News::where('visibility',1)->whereHas('subcategory', function(
                                         </div>
                                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                             <ul class="nav mainul dropdown navbar-nav">
-                                            @if(count(App\Category::all()->where('visibility',1))>0)
-                                                @foreach((App\Category::all()->where('visibility',1)) as $category)
+                                            
+                                                @foreach($category as $categories)
                                                     <li class="dropdown">
-                                                         <a class="dropdown-toggle" data-toggle="dropdown" role="button">{{$category->title_az}}</a><span class="hover"></span>
+                                                         <a class="dropdown-toggle" data-toggle="dropdown" role="button">{{$categories->title_az}}</a><span class="hover"></span>
                                                          <ul class="dropdown-menu" >
-                                                         @foreach($category->subcategories->all() as $subcategory)
-                                                            <li><a href="/news/category/{{$subcategory->id}}">{{ $subcategory->title_az}}</a></li>
+                                                         @foreach($categories->subcategories->all() as $subcategories)
+                                                            <li><a href="/news/category/{{$subcategories->id}}">{{ $subcategories->title_az}}</a></li>
                                                           
                                                             @endforeach
                                                          </ul>
                                                     </li>
                                                 @endforeach
-                                            @endif
+                                     
                                                 <ul class="nav navbar-nav navbar-right" style="margin:0px;">
                                                     <li>
                                                         <div class="mainSearch col-xs-12">

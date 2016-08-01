@@ -14,6 +14,7 @@
 		    			<th>Short description</th>
 		    			<th>Catecory</th>
 		    			<th>updated time</th>
+		    			<th>Add to s</th>
 		    			<th>Edit</th>
 		    			<th>Delete</th>
 	    			</tr>
